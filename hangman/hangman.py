@@ -38,7 +38,7 @@ while not end_of_game:
         health -= 1
         # if health is 0 end the game
         if health == 0:
-            print(f'You lose...\n The word was {chosen_word}')
+            print(f'You lose... the word was {chosen_word}')
             end_of_game = True
     # print the state of the game
     print(f"{' '.join(display)}\n{stages[health]}")
