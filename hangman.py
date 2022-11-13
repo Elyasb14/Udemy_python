@@ -1,22 +1,37 @@
 # import modules
 import random
 
-# possible words
+# initialize a possible word list
 word_list = ["aardvark", "baboon", "camel"]
 
-# randomly choose a word from the word_list and assign it to a variable called chosen_word.
+# choose word at random and print for debugging purposes
 chosen_word = random.choice(word_list)
 print(chosen_word)
 
 
-# ask the user to guess a letter and assign their answer to a variable called guess. Make guess lowercase.
-guess = str(input("Input a letter: ")).lower()
+# list for keeping track of progress in game
+display = []
 
-
-# loop thru word to check if guess is in word
+#For each letter in the chosen_word, add a "_" to 'display'.
 for letter in chosen_word:
-    if letter == guess:
-        print("right")
-    else:
-        print("wrong")
-    
+    display.append('_')
+
+# end of game conditional
+end_of_game = False
+
+# prompt the user to guess a letter until there are no more '_' in display
+while not end_of_game:
+    guess = input("Guess a letter: ").lower()
+    # loop thru each index in chosen_word
+    for position in range(len(chosen_word)):
+        letter = chosen_word[position]
+        # check to see if 
+        if letter == guess:
+            display[position] = guess
+    if '_' in display:
+        end_of_game = False
+    print(display)
+
+
+
+
