@@ -1,120 +1,52 @@
+# import modules
+import random
+from stages import stages, logo
+from words import word_list
 
-from art import logo
-
+# start game
 print(logo)
 
-alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
-
-# while loop that breaks when user doesn't want to continue 
-
-while True:
-    # user inputs
-    direction = input("Type 'encode' to encrypt, type 'decode' to decrypt:\n")
-    text = input("Type your message:\n").lower()
-    shift = (int(input("Type the shift number:\n")) % 26)
-    # main function
-    def main(direction):
-        if direction == 'encode':
-            encrypt2(text, shift)
-        elif direction == "decode":
-            decrypt2(text, shift)
-    # does user want to go again?
-    choice = input('Do you want to go again? ')
-    if choice == 'no':
-        break
+# choose word at random from words.py
+chosen_word = random.choice(word_list)
 
 
 
+# lists for keeping track of progress in game
+display = []
+health = 6
 
-# function to encrypt version 2
+#For each letter in the chosen_word, add a "_" to 'display'.
+for letter in chosen_word:
+    display.append('_')
 
-def encrypt2(text, shift):
-    # making a list of all the letters and symbols in text
-    letters = list(text)
-    # list to store shifted text
-    shifted_text = []
-    # loop thru letters list
-    for letter in letters:
-        # shift letters
-        if letter in alphabet:
-            letter_index = alphabet.index(letter)
-            if letter_index + shift < 26:
-                shifted_letter = alphabet[letter_index + shift]
-                shifted_text.append(shifted_letter)
-            # if index is out of range
-            else:
-                difference = 26 - letter_index
-                shifted_letter = alphabet[shift - difference]
-                shifted_text.append(shifted_letter)
-        # leave symbols still
-        else:
-            shifted_text.append(letter)
-    # print shifted_letters as string
-    print(''.join(shifted_text))
+# end of game conditional
+end_of_game = False
 
-
-# function to decrypt version 2
-
-def decrypt2(text, shift):
-    # making a list of all the letters and symbols in text
-    letters = list(text)
-    # list to store shifted text
-    shifted_text = []
-    # loop thru letters list
-    for letter in letters:
-        # shift letters
-        if letter in alphabet:
-            letter_index = alphabet.index(letter)
-            if 26 - letter_index > 0:
-                shifted_text.append(alphabet[letter_index - shift])
-            # if index is out of range
-            else:
-                difference = letter_index - 26
-                shifted_text.append(alphabet[difference - shift])
-        # leave symbols still
-        else:
-            shifted_text.append(letter)
-    # print shifted_letters as string
-    print(''.join(shifted_text))
+# prompt the user to guess a letter until there are no more '_' in display and check conditionals
+while not end_of_game:
+    guess = input("Guess a letter: ").lower()
+    
+    if guess in display:
+        print(f"you already guessed {guess}")
+    # loop thru each index in chosen_word to see if guess is in chosen_word
+    for position in range(len(chosen_word)):
+        letter = chosen_word[position]
+        if letter == guess:
+            display[position] = guess
+    # if the guess is not right, decrease health
+    if guess not in chosen_word:
+        health -= 1
+        # if health is 0 end the game
+        if health == 0:
+            print(f'You lose... the word was {chosen_word}')
+            end_of_game = True
+    # print the state of the game
+    print(f"{' '.join(display)}\n{stages[health]}")
+    
+    # check if there are any blank spaces in the display; if there are none -> end_of_game = True
+    if '_' not in display:
+        end_of_game = True
+        print('You Win!')       
 
 
 
-'''
-LEGACY CODE
-
-def encrypt(text, shift):
-    # list to store shifted letters
-    shifted_text = []
-    # loop over all letters in the text
-    for letter in text:
-        # obtain letter index
-        letter_index = alphabet.index(letter)
-        # if letter's index is in rane
-        if letter_index + shift < 26:
-            shifted_letter = alphabet[letter_index + shift]
-            shifted_text.append(shifted_letter)
-        # if letter's index is out of range
-        else:
-            difference = 26 - letter_index
-            shifted_letter = alphabet[shift - difference]
-            shifted_text.append(shifted_letter)
-    print(shifted_text)
-    print(''.join(shifted_text))
-
-# function to decrypt text
-
-def decrypt(text, shift):
-    # list to store shifted letters
-    shifted_text = []
-    # loop over all letters in the text
-    for letter in text:
-        # obtain letter index
-        letter_index = alphabet.index(letter)
-        # if index is in range
-        if 26 - letter_index > 0:
-            shifted_text.append(alphabet[letter_index - shift])
-        # if index is out of range
-        else:
-            difference = letter_index - 26
-            shifted_text.append(alphabet[difference - shift])
-    print(''.join(shifted_text))'''
