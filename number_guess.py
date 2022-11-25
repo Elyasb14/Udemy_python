@@ -3,6 +3,7 @@ import random
 health_easy = 10
 health_hard = 5
 
+
 # function to compere guess and number
 def compare(number, guess, turns):
     if guess > number:
@@ -16,6 +17,7 @@ def compare(number, guess, turns):
     else:
         print(f'You win! the answer was {number}')
 
+
 # function to set difficulty -> returns health_easy or health_hard
 def set_difficulty():
     level = input("Choose a difficulty. Type 'easy' or 'hard': ")
@@ -23,6 +25,7 @@ def set_difficulty():
         return health_easy
     else:
         return health_hard
+
 
 # main game function
 def game():
@@ -33,11 +36,5 @@ def game():
     while guess != number:
         print(f"You have {turns} attempts remaining to guess the number.")
         guess = int(input("Make a guess: "))
-        turns = compare(number, guess, turns)
-        if turns == 0:
-            print("You've run out of guesses, you lose.")
-            return
-        elif guess != number:
-            print("Guess again.")
-            
+
 game()
