@@ -9,11 +9,11 @@ def compare(number, guess, turns):
     if guess > number:
         print('Too high.')
         # decrease turns by 1
-        return turns -1
+        return turns - 1
     elif guess < number:
         print('Too low.')
         # decrease turns by 1
-        return turns -1
+        return turns - 1
     else:
         print(f'You win! the answer was {number}')
 
@@ -36,5 +36,11 @@ def game():
     while guess != number:
         print(f"You have {turns} attempts remaining to guess the number.")
         guess = int(input("Make a guess: "))
-
+        turns = compare(number, guess, turns)
+        if turns == 0:
+            print("You've run out of guesses, you lose.")
+            return
+        elif guess != number:
+            print("Guess again.")
+        
 game()
