@@ -30,7 +30,7 @@ def set_difficulty():
 # main game function
 def game():
     number = random.randint(1, 100)
-    print(f"Pssst, the correct answer is {number}") 
+    # print(f"Pssst, the correct answer is {number}") 
     turns = set_difficulty()
     guess = 0
     while guess != number:
