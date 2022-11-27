@@ -8,33 +8,46 @@ TO DO:
 from game_data import data
 import random
 
-score = 0
-end_of_game = False
+def get_account():
+    return random.choice(data)
 
-def compare(followersA, followersB):
+def format_data(account):
+    name = account["name"]
+    description = account["description"]
+    country = account["country"]
+    # print(f'{name}: {account["follower_count"]}')
+    return f"{name}, a {description}, from {country}."
+
+def compare(followersA, followersB, guess):
     if followersA > followersB:
-        return 'A', personA
-    else: 
-        return 'B', personB
-
-personA = random.choice(data)
-personA_name = personA['name']
-followersA = personA['follower_count']
-
-personB = random.choice(data)
-personB_name = personB['name']
-followersB = personB['follower_count']
-
-while not end_of_game:
-    print(f'{personA_name} vs. {personB_name}')
-    print(f'person {compare(followersA, followersB)} is the answer.')
-    guess = input('Who has more followers, person A or B: ')
-    answer = compare(followersA, followersB)
-    if guess == answer:
-        score += 1
-        print(f'Your score is {score}')
-        personA = answer
-        personB = random.choice(data)
+        return guess == 'a'
     else:
-        print('You were wrong')
-        end_of_game = True
+        return guess == 'b'
+    
+def game():
+    score = 0
+    end_of_game = False
+    accountA = get_account()
+    accountB = get_account()
+    while not end_of_game:
+        accountA = accountB
+        accountB = get_account()
+        while accountA == accountB:
+            accountB = get_account()
+            print(f"Compare A: {format_data(accountA)}.")
+            print('vs')
+            print(f"Against B: {format_data(accountB)}.")
+            guess = input('Input who you think has more followers: ').lower()
+            followersA = accountA['follower_count']
+            followersB = accountB['follower_count']
+            is_correct = compare(followersA, followersB, guess)
+            if is_correct:
+                score += 1
+                print(f"You're right! Current score: {score}.")
+            else:
+                end_of_game = True
+                print('you lose...')
+                
+game()
+                
+            
