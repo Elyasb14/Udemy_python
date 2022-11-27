@@ -1,9 +1,4 @@
-'''
-TO DO:
 
-- If the user guesses right, change personB to personA and generate a new person B
-
-'''
 
 from game_data import data
 import random
