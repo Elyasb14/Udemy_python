@@ -1,9 +1,16 @@
 from data import MENU, resources
 
-def check_money():
-    return
+def espresso():
+    return water - 100, coffee - 50
 
+def latte():
+    return water - 100, coffee - 50, milk - 50
 
+def cappuccino():
+    return water - 100, coffee - 50, milk -100
+
+def input_money():
+    
 
 def coffee_machine():
     machine_off = False
@@ -17,7 +24,5 @@ def coffee_machine():
             return
         elif choice == 'report':
             print(f'Water: {water}ml\nMilk: {milk}ml\nCoffee: {coffee}g\nMoney: ${money}')
-        elif choice == 'espresso':
-            
-        
+
 coffee_machine()
