@@ -10,7 +10,7 @@ def cappuccino():
     return water - 100, coffee - 50, milk -100
 
 def input_money():
-    
+    pass
 
 def coffee_machine():
     machine_off = False
