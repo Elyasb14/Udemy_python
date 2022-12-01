@@ -18,15 +18,16 @@ def request_money(choice):
         return money
 
 def check_ingredients(choice, water, milk, coffee):
-    if MENU['resources']['water'] >  MENU[choice]['ingredients']['water']:
+    if resources['water'] >  MENU[choice]['ingredients']['water']:
         resources['water'] = resources['water'] - MENU[choice]['ingredients']['water']
         print(resources['water'])
-    elif MENU['resources']['milk'] >  MENU[choice]['ingredients']['milk']:
+    elif resources['milk'] >  MENU[choice]['ingredients']['milk']:
         resources['milk'] = resources['milk'] - MENU[choice]['ingredients']['milk']
         print(resources['milk'])
-    elif MENU['resources']['coffee'] >  MENU[choice]['ingredients']['coffee']:
+    elif resources['coffee'] >  MENU[choice]['ingredients']['coffee']:
         resources['coffee'] = resources['coffee'] - MENU[choice]['ingredients']['coffee']
         print(resources['coffee'])
+    
 check_ingredients('espresso', 'water', "milk", 'coffee')
 
 def coffee_machine():
