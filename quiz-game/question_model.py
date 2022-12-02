@@ -4,6 +4,4 @@ class Question:
         self.text = text
         self.answer = answer
         
-        
-newq = Question('3+3=6', 'True')
-print(newq.text)
+
