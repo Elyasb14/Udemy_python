@@ -14,12 +14,18 @@ class QuizBrain:
         self.question_number += 1
         user_answer = input(f'Q.{self.question_number}: {question.text} (True/False): ')
         self.check_answer(user_answer, question.answer)
+        if self.question_number == 12:
+            print(f"You've completed the quiz\nYour score was {self.score}/{self.question_number}")
 
     def check_answer(self, user_answer, correct_answer):
         if user_answer.lower() == correct_answer.lower():
             self.score += 1
-            print('Right')
+            print('You were right!')
+            print(f'Score: {self.score}/{self.question_number}')
+            print(f'The correct answer is: {correct_answer}')
+            print("\n")
         else:
-            print('wrong')
-        print(f'The correct answer is: {correct_answer}')
-        
+            print('You were wrong...')
+            print(f'Score: {self.score}/{self.question_number}')
+            print(f'The correct answer is: {correct_answer}')
+            print("\n")
