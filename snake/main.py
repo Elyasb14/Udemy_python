@@ -13,7 +13,7 @@ for position in positions:
     segment.color('white')
     segment.goto(position)
     segments.append(segment)
- 
+
 game_is_on = True   
 while game_is_on:
     for seg in segments:
