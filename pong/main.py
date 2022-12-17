@@ -19,10 +19,10 @@ puck = puck.Puck()
 
 # move paddle up and down with Up and Down arrows
 screen.listen()
-screen.onkey(fun = left_paddle.up, key = 'w')
-screen.onkey(fun = left_paddle.down, key = 's')
-screen.onkey(fun = right_paddle.up, key = 'Up')
-screen.onkey(fun = right_paddle.down, key = 'Down')
+screen.onkeypress(fun = left_paddle.up, key = 'w')
+screen.onkeypress(fun = left_paddle.down, key = 's')
+screen.onkeypress(fun = right_paddle.up, key = 'Up')
+screen.onkeypress(fun = right_paddle.down, key = 'Down')
 
 # main while loop
 game_is_on = True
