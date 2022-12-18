@@ -5,15 +5,16 @@ class Paddle(Turtle):
     def __init__(self, position):
         super().__init__()
         self.shape('square')
-        self.shapesize(stretch_len = 5, stretch_wid = 1)
         self.color('white')
+        self.shapesize(stretch_wid = 5, stretch_len = 1)
         self.penup()
-        self.starting_position = self.goto(position)
-        self.setheading(90)
+        self.goto(position)
     # method to move paddle up
     def up(self):
-        self.goto(self.xcor(), self.ycor() + 20)
+        new_y = self.ycor() + 20
+        self.goto(self.xcor(), new_y)
     # method to move paddle down
     def down(self):
-        self.goto(self.xcor(), self.ycor() - 20)
+        new_y = self.ycor() - 20
+        self.goto(self.xcor(), new_y)
 
