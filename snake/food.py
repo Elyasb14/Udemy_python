@@ -12,6 +12,7 @@ class Food(Turtle):
         self.color('Blue')
         self.speed('fastest')
         self.refresh()
+    
     # method to move food to a random place 
     def refresh(self):
         self.goto((random.randint(-280, 280), random.randint(-280, 280)))
