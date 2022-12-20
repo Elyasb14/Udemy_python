@@ -3,8 +3,6 @@ import time
 import snake
 import food
 import scoreboard
-import numpy
-import pandas
 
 
 # initialize screen and add some properties
