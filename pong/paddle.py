@@ -9,6 +9,7 @@ class Paddle(Turtle):
         self.shapesize(stretch_wid = 5, stretch_len = 1)
         self.penup()
         self.goto(position)
+        return False
     # method to move paddle up
     def up(self):
         new_y = self.ycor() + 20
