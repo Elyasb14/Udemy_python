@@ -5,7 +5,7 @@ import time
 
 '''
 TO DO:
-- make it so the turtle doesn't flash every time its created
+    - make it so the turtle doesn't flash every time its created
 '''
 
 
@@ -60,6 +60,4 @@ while game_is_on:
             drawing.write(arg = f"{answer_state}", move = True)
         # if not, continue
         else:
-            continue
-
-
+            continue    
