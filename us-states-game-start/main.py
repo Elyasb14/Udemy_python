@@ -10,6 +10,7 @@ TO DO:
 
 
 score = 0
+guessed_states = []
 
 # initialize screen
 screen = turtle.Screen()
@@ -24,6 +25,7 @@ data = pd.read_csv("50_states.csv")
 game_is_on = True
 while game_is_on:
     screen.title(f"US States Game: {score}/50")
+    
     # check if you've won the game
     if score == 50:
             # print you win on the screen
@@ -47,8 +49,15 @@ while game_is_on:
     else:
         # prompt input
         answer_state = screen.textinput(title = "Guess the State" , prompt = "Enter State:")
+        # check if user wants to exit and write remaining states to a csv
+        if answer_state == "exit":
+            remaining_states = [state for state in data["state"] if state not in guessed_states]
+            data_df = pd.DataFrame(remaining_states)
+            data_df.to_csv("remaining_states.csv")
+            game_is_on = False
         # check if input is a state
         if (data["state"] == f"{answer_state}").any():
+            guessed_states.append(answer_state)
             score += 1
             state = data[data["state"] == f"{answer_state}"]
             x = int(state["x"])
