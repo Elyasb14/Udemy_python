@@ -30,8 +30,3 @@ class Ball(Turtle):
         self.goto(0, 0)
         self.velocity = 0.1
         self.x_move *= -1
-    
-    
-
-
-

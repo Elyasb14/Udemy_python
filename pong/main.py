@@ -4,7 +4,7 @@ import time
 import ball
 import scoreboard
 
-# initialize a 800x800 screen
+# initialize a 800x600 screen
 screen = turtle.Screen()
 screen.setup(width = 800, height = 600)
 screen.bgcolor('Black')
@@ -38,7 +38,6 @@ while game_is_on:
     # detect colision with paddles
     if ball.distance(r_paddle) < 60 and ball.xcor() > 325  or ball.distance(l_paddle) < 60 and ball.xcor() < -325:
         ball.bounde_paddle()
-    
     
     if ball.xcor() < -380:
         scoreboard.increase_right_score()

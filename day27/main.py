@@ -1,21 +1,11 @@
-import tkinter
-
-window = tkinter.Tk()
-window.title("My first gui")
-window.minsize(width = 500, height = 300)
-
-# label
-my_label = tkinter.Label(text = "I am a label", font = ("Garamond", 24))
-my_label.pack()
+def add(*args):
+    sum = 0
+    for i in args:
+        sum += i
+    return sum
 
 
 
-
-
-
-
-
-
-window.mainloop()
+print(add(3, 4, 5, 6, 7, 9) )
 
 
