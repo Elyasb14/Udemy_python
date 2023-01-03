@@ -2,6 +2,7 @@ import tkinter
 
 window = tkinter.Tk()
 window.title("Miles to Kilometers")
+window.config(padx=20, pady=20)
 
 def button_clicked():
     km_value.config(text=float(miles_entry.get()) * 1.609)
