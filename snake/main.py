@@ -4,7 +4,6 @@ import snake
 import food
 import scoreboard
 
-
 # initialize screen and add some properties
 screen = turtle.Screen()
 screen.setup(height= 600, width = 600)
@@ -51,7 +50,6 @@ while game_is_on:
         if snake.head.distance(segment) < 10:
             scoreboard.reset()
             snake.reset()
-
 
 # screen exits on click 
 screen.exitonclick()

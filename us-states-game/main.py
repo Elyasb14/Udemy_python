@@ -2,12 +2,10 @@ import turtle
 import pandas as pd
 import time
 
-
 '''
 TO DO:
     - make it so the turtle doesn't flash every time its created
 '''
-
 
 score = 0
 guessed_states = []
@@ -20,7 +18,7 @@ turtle.shape(image)
 
 # turn into dataframe
 data = pd.read_csv("50_states.csv")
-
+print(type(data))
 # conditional for game
 game_is_on = True
 while game_is_on:
